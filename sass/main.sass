@@ -1,0 +1,192 @@
+@import'variables'
+@import 'mixin'
+@import'reset'
+
+@import 'animations'
+*
+    font-family: 'Paprika', cursive
+
+.fullscreen-header 
+    height: 100vh
+    
+    @include flexCenter
+    flex-direction: column
+    background-image: linear-gradient(to right bottom, rgba($main-color-dark,.5), rgba($main-color,.5)), url('/images/kadıneli.jpeg')
+    background-size: cover//resmi yüksekliğie göre doldurur
+    
+    background-position-y: 40%// resmi yatay eksende ortalar
+    .nav
+        background-color: #fff
+        padding: .4rem .4rem
+        position: fixed//sayfanın başına sabitlemek ve sayfayı kaydırdığımızda yine aynı konumunda durmasını sağladık
+        top:0 // bu değerleri ortadan üste çıksın diye verdik
+        left: 0// bu değerleri ortadan üste çıksın diye verdik
+        right: 0// bu değerleri ortadan üste çıksın diye verdik
+        text-align: center
+        z-index: 1// position fixed olduğu için her hep üste kalsın dşye 1 verdik
+        @include responsive(small)
+            display: flex
+            justify-content: space-between
+            padding-left: 1rem
+            padding-right: 1rem
+            
+        &__list
+            display: flex
+            list-style: none
+            justify-content: space-around
+            align-items: center
+            &-item //& ie bir üst sınıfın sınıf adını alırız. eğer aynı başlıyorlarsa 
+                text-decoration: none
+                color: $main-font-color
+                font-family: 'Paprika', cursive
+                font-size: .85em
+                margin-left: 1rem
+                &:hover
+                    color: $main-color
+               
+                    
+        .site-logo
+            height: 3rem
+            transition: .5s
+            &:hover
+                transform: rotate(1turn) // logonun kendi etrafında 1 tur dönmesi için
+    .header-title
+        color: #f5f5f5
+        font-size: 1.7rem
+        animation: soldanGelenYazi 1.5s
+
+    .btn
+        text-decoration: none
+        color:#f5f5f5
+        background-color: $main-color
+        border-radius: 10000px
+        padding:.25rem 1rem
+        margin-top: 2rem
+        border: none
+        outline: none
+        animation: ortayaCik 1.5s
+        &:hover 
+            color: #f5f5f5
+            background-color: $main-color-dark
+    .icon
+        position: absolute
+        width: 2.5rem
+        bottom: 2.5rem
+        animation: ortayaCik2 1s alternate infinite
+.section
+   
+    margin: 1rem 0
+    padding: 1rem
+    &-title
+        text-align: center
+        margin: 1rem
+        color: #191919
+    .hakkimda-grid
+        display: grid
+        grid-template-columns: minmax(auto, 500px)// mesela burada 800px verseydik yazılar 800px e kadar genişleyecekti erkan büyükdükçe
+        row-gap: 2rem
+        &__items
+            @include flexCenter 
+            //resimler ile yazılar yan yana gelsin ve ortalansın diye
+        &__resim
+            width: 20%  
+        &__yazi
+            font-size: .85rem
+            line-height: 1.6rem
+            margin-left: 0.6rem
+        @include responsive(medium)
+            grid-template-columns: repeat(2, minmax(auto,500px))
+            justify-content: center
+.section-accent
+    .egitim-container
+        background-color: $main-color
+        display: flex
+        flex-direction: column
+        justify-content: center
+        margin: 0 auto
+        @include responsive(medium)
+            flex-direction: row //ekran boyutu min 768px olduğunda bu divin içindikelri satırlara böler
+            max-width: 90% // içerik sayfanın %90 nını kaplasın demek
+        @include responsive(desktop)
+            flex-direction: row
+            max-width: 80%
+
+
+       
+        .egitim-card
+            text-align: center
+            margin:1rem 2rem
+            padding: 1rem
+            border: 1px solid $main-font-color
+            border-radius: .5rem
+            font-size: .85rem
+            transition: .4s ease-in-out
+            flex: 1 //bütün kutuların boyutlarının aynı olması için 
+          
+            &:hover
+                transform: scale(1.1) //kartların üzerine gelindiğinde büyüyüp küçülecek
+            &__java
+                background-image: linear-gradient(to right bottom, rgba(white,0.5 ), rgba(white, 0.9)), url('/images/computerfinder.png')
+                background-repeat: no-repeat
+                background-position: center center
+                background-size: contain
+            &--Python
+               
+                background-image: linear-gradient(to right bottom, rgba(white,0.5 ), rgba(white, 0.9)), url('/images/python.png')
+                background-repeat: no-repeat
+                background-position: center center
+                background-size: contain
+            &--NodeJs
+                
+                background-image: linear-gradient(to right bottom, rgba(white,0.5 ), rgba(white, 0.9)), url('/images/nodejs.png')
+                background-repeat: no-repeat
+                background-position: center center
+                background-size: contain
+.section
+        .form
+            max-width: 700px //900px e kadar genişle
+            margin: 0 auto // genişledikçe sağdan soldan otomatik değer verir. çünkü bir genişlik verdik
+
+            .form-label
+                color: $main-font-color
+                font-weight: bold
+                display: block
+            .form-input
+                width: 100%
+                outline: none
+                border: 1px solid $main-font-color
+                padding: .5rem
+                margin-top: .25rem
+                margin-bottom: .75rem
+                color: inherit// font rengini anadan kalıtım yaptık
+                resize: vertical //textare kısmının sadece yukarı aşağı oynatmak için
+                max-height:250px//textarenın ne kadar yükseleceğini belirler
+                &:hover, &:focus
+                    border-color: $main-color
+            .btn-container
+                text-align: right
+                .btn-kare
+                    background-color: $main-color
+                    padding: .5rem 1rem
+                    font-size: .95rem
+                    border-radius: .3rem
+                    outline: none
+
+
+                    
+
+                
+
+        
+        
+        
+
+
+
+
+
+
+   
+  
+    
+     
